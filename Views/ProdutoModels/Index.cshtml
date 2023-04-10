@@ -1,0 +1,52 @@
+﻿@model IEnumerable<WebApplication2.Models.ProdutoModel>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<head>
+    <link href="~/lib/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet" />
+</head>
+
+
+<h1>Produtos</h1>
+
+<p>
+    <a class="btn btn-primary"asp-action="Create">Novo</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Nome)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Disponivel)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Preco)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Nome)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Disponivel)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Preco)
+            </td>
+            <td>
+                <a class="btn btn-dark"asp-action="Edit" asp-route-id="@item.Id">Editar</a> |
+                <a class="btn btn-dark" asp-action="Details" asp-route-id="@item.Id">Detalhes</a> |
+                <a class="btn btn-dark" asp-action="Delete" asp-route-id="@item.Id">Deletar</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>
